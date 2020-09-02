@@ -1,0 +1,10 @@
+<m-loadingSpinner [inProgress]="!intentKey"></m-loadingSpinner>
+
+<iframe
+  [src]="url"
+  #iframe
+  *ngIf="intentKey"
+  allowtransparency="true"
+  style="height: 120px"
+>
+</iframe>

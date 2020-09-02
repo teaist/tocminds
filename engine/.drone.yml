@@ -1,0 +1,56 @@
+pipeline:
+
+  build:
+    image: php:7.1.11-fpm-alpine3.4
+    commands:
+      - apk update && apk add --no-cache git nodejs
+      - docker-php-ext-install mbstring
+      - docker-php-ext-install bcmath
+      - sh tools/setup.sh
+      - bin/phpspec run 
+
+  fpm:
+    image: plugins/ecr
+    repo: 324044571751.dkr.ecr.us-east-1.amazonaws.com/engine
+    secrets: [ ecr_access_key, ecr_secret_key ]
+    dockerfile: containers/php-fpm/Dockerfile
+    registry: 324044571751.dkr.ecr.us-east-1.amazonaws.com
+    tags: fpm
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      event: [ push, tag, deployment ]
+      branch: [ master, test/codebuild ]
+
+  fpm-deploy:
+    image: minds/ecs-update:latest
+    cluster: minds
+    region: us-east-1
+    service: app
+    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    when:
+      event: [ push, tag, deployment ]
+      branch: [ master, test/codebuild ]
+
+  runners:
+    image: plugins/ecr
+    repo: 324044571751.dkr.ecr.us-east-1.amazonaws.com/engine
+    registry: 324044571751.dkr.ecr.us-east-1.amazonaws.com
+    secrets: [ ecr_access_key, ecr_secret_key ]
+    dockerfile: containers/php-runners/Dockerfile
+    tags: runners
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when: 
+      event: [ push, tag, deployment ]
+      branch: [ master, test/codebuild ]
+
+  runners-deploy:
+    image: minds/ecs-update:latest
+    cluster: minds
+    region: us-east-1
+    service: runners
+    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    when:
+      event: [ push, tag, deployment ]
+      branch: [ master, test/codebuild ]

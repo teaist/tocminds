@@ -1,0 +1,12 @@
+import { __decorate } from "tslib";
+import { NgModule } from '@angular/core';
+import { TransferHttpService } from './transfer-http.service';
+let TransferHttpModule = class TransferHttpModule {
+};
+TransferHttpModule = __decorate([
+    NgModule({
+        providers: [TransferHttpService],
+    })
+], TransferHttpModule);
+export { TransferHttpModule };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHJhbnNmZXItaHR0cC5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AZ29ybml2L25neC11bml2ZXJzYWwvIiwic291cmNlcyI6WyJ0cmFuc2Zlci1odHRwL3RyYW5zZmVyLWh0dHAubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBRXpDLE9BQU8sRUFBRSxtQkFBbUIsRUFBRSxNQUFNLHlCQUF5QixDQUFDO0FBSzlELElBQWEsa0JBQWtCLEdBQS9CLE1BQWEsa0JBQWtCO0NBQUcsQ0FBQTtBQUFyQixrQkFBa0I7SUFIOUIsUUFBUSxDQUFDO1FBQ1IsU0FBUyxFQUFFLENBQUMsbUJBQW1CLENBQUM7S0FDakMsQ0FBQztHQUNXLGtCQUFrQixDQUFHO1NBQXJCLGtCQUFrQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbmltcG9ydCB7IFRyYW5zZmVySHR0cFNlcnZpY2UgfSBmcm9tICcuL3RyYW5zZmVyLWh0dHAuc2VydmljZSc7XG5cbkBOZ01vZHVsZSh7XG4gIHByb3ZpZGVyczogW1RyYW5zZmVySHR0cFNlcnZpY2VdLFxufSlcbmV4cG9ydCBjbGFzcyBUcmFuc2Zlckh0dHBNb2R1bGUge31cbiJdfQ==
