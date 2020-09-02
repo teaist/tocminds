@@ -1,9 +1,0 @@
-exec
-----------------
-Executes batches
-
-Command: cli.php Email exec --batch=batch_name
-
-Required parameters:
---batch=batch_name
-
